@@ -58,6 +58,9 @@ optional arguments:
                         language to search for
 ```
 
-Example: `python3 gh-parse-languages.py -f repos.json`
+Example:
+```shell
+python3 gh-parse-languages.py -f repos.json
+```
 
 <img width="570" alt="Screenshot 2023-03-27 at 1 08 24 PM" src="https://user-images.githubusercontent.com/110078080/228015102-af19fa02-2139-41ab-8a07-bd6b47140bda.png">
