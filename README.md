@@ -1,5 +1,5 @@
 # Background
-This repo serves to streamline analysis of the prgogramming languages used across a GitHub Organization. One use case for doing so is to identify which repositories contain a language that is supported by [CodeQL](https://codeql.github.com/docs/).
+This repo serves to streamline analysis of the prgogramming languages used across a GitHub Organization. One use case for doing so is to identify which subset of repositories contain a language that is supported by [CodeQL](https://codeql.github.com/docs/).
 
 # Pre-requisites
 1. [GitHub CLI](https://cli.github.com/)
