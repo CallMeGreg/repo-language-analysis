@@ -10,18 +10,37 @@ This repo serves to streamline analysis of the prgogramming languages used acros
 Using the GitHub CLI, we can pull data about the repositories in an organization (particularly repo names and languages). We can then parse these results using the GitHub CLI's built-in json parser. Finally, we analyze the parsed list of repos & languages with a python script.
 
 ## Step 1
-Pull the list of repositories/languages that you would like to evaluate, and save them to a file. Some example commands are provided below.
+Pull the list of repositories (and their languages) that you would like to evaluate, and save them to a file. Some example commands are provided below.
 
 _List all repos in an organization:_
 
-`gh repo list ORGANIZATION --limit 100 --json languages,nameWithOwner --jq '.[] | (.languages) = [.languages[].node.name]' > repos.json`
+```
+gh repo list ORGANIZATION --limit 100 \
+--json languages,nameWithOwner \
+--jq '.[] | (.languages) = [.languages[].node.name]' > repos.json
+```
 
 _List all repos that contain at least one CodeQL supported programming language:_
 
-`gh repo list ORGANIZATION --limit 100 --json nameWithOwner,languages --jq '.[] | (.languages) = [.languages[].node.name] | select(.languages | any(. == "JavaScript" or . == "TypeScript" or . == "Python" or . == "Ruby" or . == "Java" or . == "C#" or . == "C" or . == "C++" or . == "Go" or . == "Kotlin"))' > repos.json`
+```
+gh repo list ORGANIZATION --limit 100 \
+--json nameWithOwner,languages \
+--jq '
+.[] | (.languages) = [.languages[].node.name] | 
+select(.languages | any(. == "JavaScript" or . == "TypeScript" or . == "Python" or . == "Ruby" or . == "Java" or . == "C#" or . == "C" or . == "C++" or . == "Go" or . == "Kotlin"))' > repos.json
+```
 
-List all repos that contain at least one CodeQL supported _interpreted_ programming language AND zero CodeQL supported _compiled_ languages:
+_List all repos that contain at least one CodeQL supported _interpreted_ programming language AND zero CodeQL supported _compiled_ languages:_
 
+```
+gh repo list ORGANIZATION --limit 100 \
+  --json nameWithOwner,languages \
+  --jq '
+  .[] | (.languages) = [.languages[].node.name] |                      
+  select(.languages | all(. != "Java" and . != "C#" and . != "C" and . != "C++" and . != "Go” and . != “Kotlin”) |
+  select(.languages | any(. == "JavaScript" or . == "TypeScript" or . == "Python" or . == "Ruby"))' \
+  > repos.json
+```
 
 ## Step 2
 Analyze the languages in the targted list of repositories by running the `gh-parse-languages.py` python script (located in this repo).
