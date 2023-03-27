@@ -14,7 +14,7 @@ Pull the list of repositories (and their languages) that you would like to analy
 
 _List all repos in an organization:_
 
-```
+```shell
 gh repo list ORGANIZATION --limit 100 \
 --json languages,nameWithOwner \
 --jq '.[] | (.languages) = [.languages[].node.name]' \
@@ -23,7 +23,7 @@ gh repo list ORGANIZATION --limit 100 \
 
 _List all repos that contain at least one CodeQL supported programming language:_
 
-```
+```shell
 gh repo list ORGANIZATION --limit 100 \
 --json nameWithOwner,languages \
 --jq '
@@ -34,7 +34,7 @@ select(.languages | any(. == "JavaScript" or . == "TypeScript" or . == "Python" 
 
 _List all repos that contain at least one CodeQL supported _interpreted_ programming language AND zero CodeQL supported _compiled_ languages:_
 
-```
+```shell
 gh repo list ORGANIZATION --limit 100 \
 --json nameWithOwner,languages \
 --jq '
@@ -47,7 +47,7 @@ select(.languages | any(. == "JavaScript" or . == "TypeScript" or . == "Python" 
 ## Step 2
 Analyze the languages in the targted list of repositories by running the `gh-parse-languages.py` python script (located in this repo).
 
-```
+```shell
 usage: gh-parse-languages.py [-h] -f FILE [-l LANGUAGE]
 
 optional arguments:
