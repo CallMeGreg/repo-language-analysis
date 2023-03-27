@@ -17,7 +17,8 @@ _List all repos in an organization:_
 ```
 gh repo list ORGANIZATION --limit 100 \
 --json languages,nameWithOwner \
---jq '.[] | (.languages) = [.languages[].node.name]' > repos.json
+--jq '.[] | (.languages) = [.languages[].node.name]' \
+> repos.json
 ```
 
 _List all repos that contain at least one CodeQL supported programming language:_
@@ -27,19 +28,20 @@ gh repo list ORGANIZATION --limit 100 \
 --json nameWithOwner,languages \
 --jq '
 .[] | (.languages) = [.languages[].node.name] | 
-select(.languages | any(. == "JavaScript" or . == "TypeScript" or . == "Python" or . == "Ruby" or . == "Java" or . == "C#" or . == "C" or . == "C++" or . == "Go" or . == "Kotlin"))' > repos.json
+select(.languages | any(. == "JavaScript" or . == "TypeScript" or . == "Python" or . == "Ruby" or . == "Java" or . == "C#" or . == "C" or . == "C++" or . == "Go" or . == "Kotlin"))' \
+> repos.json
 ```
 
 _List all repos that contain at least one CodeQL supported _interpreted_ programming language AND zero CodeQL supported _compiled_ languages:_
 
 ```
 gh repo list ORGANIZATION --limit 100 \
-  --json nameWithOwner,languages \
-  --jq '
-  .[] | (.languages) = [.languages[].node.name] |                      
-  select(.languages | all(. != "Java" and . != "C#" and . != "C" and . != "C++" and . != "Go” and . != “Kotlin”)) |
-  select(.languages | any(. == "JavaScript" or . == "TypeScript" or . == "Python" or . == "Ruby"))' \
-  > repos.json
+--json nameWithOwner,languages \
+--jq '
+.[] | (.languages) = [.languages[].node.name] |                      
+select(.languages | all(. != "Java" and . != "C#" and . != "C" and . != "C++" and . != "Go” and . != “Kotlin”)) |
+select(.languages | any(. == "JavaScript" or . == "TypeScript" or . == "Python" or . == "Ruby"))' \
+> repos.json
 ```
 
 ## Step 2
