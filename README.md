@@ -39,8 +39,8 @@ _List all repos that contain at least one CodeQL supported _interpreted_ program
 gh repo list ORGANIZATION --limit 100 \
 --json nameWithOwner,languages \
 --jq \
-'.[] | (.languages) = [.languages[].node.name] |                      
-select(.languages | all(. != "Java" and . != "C#" and . != "C" and . != "C++" and . != "Go” and . != “Kotlin”)) |
+'.[] | (.languages) = [.languages[].node.name] |
+select(.languages | all(. != "Java" and . != "C#" and . != "C" and . != "C++" and . != "Go" and . != "Kotlin")) |
 select(.languages | any(. == "JavaScript" or . == "TypeScript" or . == "Python" or . == "Ruby"))' \
 > repos.json
 ```
