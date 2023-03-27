@@ -33,9 +33,7 @@ optional arguments:
   -l LANGUAGE, --language LANGUAGE
                         language to search for
 ```
+
 Example: `python3 gh-parse-languages.py -f repos.json`
 
-# Example gh commands
-Listed below are several examples of how you can analyze the languages used in an organization. Make sure that the `--limit` flag and ORGANIZATION name are updated for your specific needs.
-
-`gh repo list ORGANIZATION --limit 100 --json languages,nameWithOwner --jq '.[] | (.languages) = [.languages[].node.name]’`
+<img width="570" alt="Screenshot 2023-03-27 at 1 08 24 PM" src="https://user-images.githubusercontent.com/110078080/228015102-af19fa02-2139-41ab-8a07-bd6b47140bda.png">
