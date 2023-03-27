@@ -13,9 +13,11 @@ Using the GitHub CLI, we can pull data about the repositories in an organization
 Pull the list of repositories/languages that you would like to evaluate, and save them to a file. Some example commands are provided below.
 
 List all repos in an organization:
+
 `gh repo list ORGANIZATION --limit 100 --json languages,nameWithOwner --jq '.[] | (.languages) = [.languages[].node.name]' > repos.json`
 
 List all repos that contain at least one CodeQL supported programming language:
+
 `gh repo list ORGANIZATION --limit 100 --json nameWithOwner,languages --jq '.[] | (.languages) = [.languages[].node.name] | select(.languages | any(. == "JavaScript" or . == "TypeScript" or . == "Python" or . == "Ruby" or . == "Java" or . == "C#" or . == "C" or . == "C++" or . == "Go" or . == "Kotlin"))' > repos.json`
 
 List all repos that contain at least one CodeQL supported _interpreted_ programming language AND zero CodeQL supported _compiled_ languages:
