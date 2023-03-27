@@ -10,7 +10,7 @@ This repo serves to streamline analysis of the prgogramming languages used acros
 Using the GitHub CLI, we can pull data about the repositories in an organization (particularly repo names and languages). We can then parse these results using the GitHub CLI's built-in json parser. Finally, we analyze the parsed list of repos & languages with a python script.
 
 ## Step 1
-Pull the list of repositories (and their languages) that you would like to analyze, and save them to a file. Some example commands are provided below.
+Pull the list of repositories (and their languages) that you would like to analyze, and save them to a file. Some example commands to do so are listed below.
 
 _List all repos in an organization:_
 
