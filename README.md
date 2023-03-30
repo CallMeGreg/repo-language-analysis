@@ -7,7 +7,7 @@ This repo helps analyze the prgogramming languages used across a GitHub Organiza
 3. Read access to repos in the target GitHub organization
 
 # How it works
-Using the GitHub CLI, we can pull data about the repositories in an organization (particularly repo names and languages). We can then parse these results using the GitHub CLI's built-in json parser. Finally, we analyze the parsed list of repos & languages with a python script to determine the frequnecy of each language.
+Using the GitHub CLI, we can pull data about the repositories in an organization (specifically repo names and languages). We can then parse these results using the GitHub CLI's built-in json parser. Finally, we analyze the parsed list of repos & languages with a python script to determine the frequnecy of each language.
 
 ## Step 1
 Pull the list of repositories (and their languages) that you would like to analyze, and save them to a file. Some example commands to do so are listed below.
