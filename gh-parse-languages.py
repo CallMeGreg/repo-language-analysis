@@ -56,10 +56,10 @@ def main():
     args = parser.parse_args()
 
     # read in lines from `gh repo list` command:
-    myfile = open(args.file, 'r')
     json_obj = []
-    for line in myfile:
-        json_obj.append(json.loads(line))
+    with open(args.file, 'r') as f:
+        for line in f:
+            json_obj.append(json.loads(line))
 
     # call function to calculate language distribution:
     print(f"--- Parsing {len(json_obj)} repositories ---")

@@ -1,0 +1,16 @@
+{"languages":["ASP.NET","C#","CSS","JavaScript"],"nameWithOwner":"callmegreg-demo-org/webgoat-dotnet"}
+{"languages":["Kotlin"],"nameWithOwner":"callmegreg-demo-org/kotlin-repo"}
+{"languages":["Dockerfile","Python","JavaScript","HTML","Vue","Less","Go","Java","Kotlin"],"nameWithOwner":"callmegreg-demo-org/app-abc-repo"}
+{"languages":["Dockerfile","Python","JavaScript","HTML","Vue","Less","Go","Java","HCL"],"nameWithOwner":"callmegreg-demo-org/app-xyz-repo"}
+{"languages":["Dockerfile","Python","JavaScript","HTML","Vue","Less","Go","Java"],"nameWithOwner":"callmegreg-demo-org/website-frontend"}
+{"languages":["Dockerfile","Python","JavaScript","HTML","Vue","Less","Go","Java"],"nameWithOwner":"callmegreg-demo-org/ghas-enablement-demo"}
+{"languages":["JavaScript","Dockerfile","HCL"],"nameWithOwner":"callmegreg-demo-org/my-reusable-workflows"}
+{"languages":["JavaScript"],"nameWithOwner":"callmegreg-demo-org/js-repo"}
+{"languages":["Dockerfile","Shell","Python","JavaScript","HTML","Vue","Less","Go","Java"],"nameWithOwner":"callmegreg-demo-org/codeql-detect-languages"}
+{"languages":["Dockerfile","Shell","Python","JavaScript","HTML","Vue","Less","Go","Java"],"nameWithOwner":"callmegreg-demo-org/cli-demo"}
+{"languages":["Dockerfile","Shell","Python","JavaScript","HTML","Vue","Less","Go","Java"],"nameWithOwner":"callmegreg-demo-org/vulnerable-repo"}
+{"languages":["Shell","JavaScript","TypeScript","Dockerfile"],"nameWithOwner":"callmegreg-demo-org/probot-security-alerts"}
+{"languages":[],"nameWithOwner":"callmegreg-demo-org/secret-repo"}
+{"languages":["Dockerfile","Shell","Python","JavaScript","HTML","Vue","Less","Go","Java"],"nameWithOwner":"callmegreg-demo-org/webgoat"}
+{"languages":[],"nameWithOwner":"callmegreg-demo-org/required-workflows"}
+{"languages":[],"nameWithOwner":"callmegreg-demo-org/sample-repo"}
