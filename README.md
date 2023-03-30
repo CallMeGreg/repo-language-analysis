@@ -22,7 +22,7 @@ gh repo list ORGANIZATION --limit 100 \
 > repos.json
 ```
 
-_List all repos that contain at least one CodeQL supported programming language:_
+_List all repos that contain at least one CodeQL supported language:_
 
 ```shell
 gh repo list ORGANIZATION --limit 100 \
@@ -33,7 +33,7 @@ select(.languages | any(. == "JavaScript" or . == "TypeScript" or . == "Python" 
 > repos.json
 ```
 
-_List all repos that contain at least one CodeQL supported _interpreted_ programming language AND zero CodeQL supported _compiled_ languages:_
+_List all repos that contain at least one CodeQL supported *_*interpreted*_* language AND zero CodeQL supported *_*compiled*_* languages:_
 
 ```shell
 gh repo list ORGANIZATION --limit 100 \
@@ -64,3 +64,12 @@ python3 gh-parse-languages.py -f repos.json
 ```
 
 <img width="570" alt="Screenshot 2023-03-27 at 1 08 24 PM" src="https://user-images.githubusercontent.com/110078080/228015102-af19fa02-2139-41ab-8a07-bd6b47140bda.png">
+
+## (Optional) Step 3
+If you would like to convert the output from the previous `gh` commands into valid json format for your own further analysis, use the following command:
+```shell
+sed '1s/^/[/;$!s/$/,/;$s/$/]/' repos.json > formatted_repos.json
+```
+
+# Find a problem?
+Please open an [issue](https://github.com/CallMeGreg/repo-language-analysis/issues/new)!
