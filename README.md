@@ -46,7 +46,7 @@ select(.languages | any(. == "JavaScript" or . == "TypeScript" or . == "Python" 
 ```
 
 ## Step 2
-Analyze the languages in the targted list of repositories by running the `gh-parse-languages.py` python script (located in this repo).
+Analyze the languages in the targted list of repositories by running the `gh-parse-languages.py` python script.
 
 ```
 usage: gh-parse-languages.py [-h] -f FILE [-l LANGUAGE]
