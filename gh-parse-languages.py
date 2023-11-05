@@ -20,32 +20,23 @@ def calculateLanguageDistribution(json, lang):
                 language_occurrences[current_language] += 1
             else:
                 language_occurrences[current_language] = 1
-    
+
     # sort language_occurrences by number of occurrences:
     language_occurrences = {k: v for k, v in sorted(language_occurrences.items(), key=lambda item: item[1], reverse=True)}
 
     # setup print formatting:
     percentage_width = 2
 
-    # check if language argument was used:
-    if (lang):
+    # more print formatting:
+    repo_width = 0 if lang else len(str(max(language_occurrences.values())))
+    # print results:
+    for language in [lang] if lang else language_occurrences:
         # calculate language percentages:
-        language_percent = math.floor(language_occurrences[lang] / len(json) * 100)
+        language_percent = math.floor(language_occurrences[language] / len(json) * 100)
         # more print formatting:
-        repo_text = "repo " if language_occurrences[lang] == 1 else "repos"
+        repo_text = "repo " if language_occurrences[language] == 1 else "repos"
         # print results:
-        print(f"{language_occurrences[lang]} {repo_text} ({language_percent:{percentage_width}}%) that include the language: {lang}")
-    else:
-        # more print formatting:
-        repo_width = len(str(max(language_occurrences.values())))
-        # print results:
-        for language in language_occurrences:
-            # calculate language percentages:
-            language_percent = math.floor(language_occurrences[language] / len(json) * 100)
-            # more print formatting:
-            repo_text = "repo " if language_occurrences[language] == 1 else "repos"
-            # print results:
-            print(f"{language_occurrences[language]:{repo_width}} {repo_text} ({language_percent:{percentage_width}}%) that include the language: {language}")
+        print(f"{language_occurrences[language]:{repo_width}} {repo_text} ({language_percent:{percentage_width}}%) that include the language: {language}")
 
 def main():
 
