@@ -47,12 +47,13 @@ def calculateLanguageDistribution(json, lang):
             # print results:
             print(f"{language_occurrences[language]:{repo_width}} {repo_text} ({language_percent:{percentage_width}}%) that include the language: {language}")
 
-def main():
 
+def main():
     # parse arguments:
     parser = argparse.ArgumentParser()
     parser.add_argument('-f', '--file', required=True, help='JSON file to read from')
     parser.add_argument('-l', '--language', required=False, help='language to search for')
+    parser.add_argument('-t', '--top', required=False, help='top N languages to display')
     args = parser.parse_args()
 
     # read in lines from `gh repo list` command:
@@ -64,5 +65,6 @@ def main():
     # call function to calculate language distribution:
     print(f"--- Parsing {len(json_obj)} repositories ---")
     calculateLanguageDistribution(json_obj, args.language)
+
 
 main()
