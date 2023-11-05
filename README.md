@@ -10,12 +10,20 @@ This repo helps analyze the prgogramming languages used across a GitHub Organiza
 Using the GitHub CLI, we can pull data about the repositories in an organization (specifically repo names and languages). We can then parse these results using the GitHub CLI's built-in json parser. Finally, we analyze the parsed list of repos & languages with a python script to determine the frequnecy of each language.
 
 ## Step 1
+Set environment variables for your target organization name and repository limit:
+
+```shell
+export ORGANIZATION=your-organization-name-here
+export REPO_LIMIT=100
+```
+
+## Step 1
 Pull the list of repositories (and their languages) that you would like to analyze, and save them to a file. Some example commands to do so are listed below.
 
 _List all repos in an organization:_
 
 ```shell
-gh repo list ORGANIZATION --limit 100 \
+gh repo list $ORGANIZATION --limit $REPO_LIMIT \
 --json languages,nameWithOwner \
 --jq \
 '.[] | (.languages) = [.languages[].node.name]' \
@@ -25,7 +33,7 @@ gh repo list ORGANIZATION --limit 100 \
 _List all repos that contain at least one CodeQL supported language:_
 
 ```shell
-gh repo list ORGANIZATION --limit 100 \
+gh repo list $ORGANIZATION --limit $REPO_LIMIT \
 --json nameWithOwner,languages \
 --jq \
 '.[] | (.languages) = [.languages[].node.name] | 
@@ -36,7 +44,7 @@ select(.languages | any(. == "JavaScript" or . == "TypeScript" or . == "Python" 
 _List all repos that contain at least one CodeQL supported *_*interpreted*_* language AND zero CodeQL supported *_*compiled*_* languages:_
 
 ```shell
-gh repo list ORGANIZATION --limit 100 \
+gh repo list $ORGANIZATION --limit $REPO_LIMIT \
 --json nameWithOwner,languages \
 --jq \
 '.[] | (.languages) = [.languages[].node.name] |
