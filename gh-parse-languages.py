@@ -48,7 +48,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-f', '--file', required=True, help='JSON file to read from')
     parser.add_argument('-l', '--language', required=False, help='language to search for')
-    parser.add_argument('-t', '--top', required=False, help='top N languages to display', type=int)
+    parser.add_argument('-t', '--top', required=False, help='top N languages to display', type=int, default=100)
     args = parser.parse_args()
 
     # read in lines from `gh repo list` command:
