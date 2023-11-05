@@ -16,7 +16,7 @@ def calculateLanguageDistribution(json, lang):
     language_occurrences = {}
     for pair in json:
         for current_language in pair['languages']:
-            if (current_language in language_occurrences):
+            if current_language in language_occurrences:
                 language_occurrences[current_language] += 1
             else:
                 language_occurrences[current_language] = 1
@@ -28,7 +28,7 @@ def calculateLanguageDistribution(json, lang):
     percentage_width = 2
 
     # check if language argument was used:
-    if (lang):
+    if lang:
         # calculate language percentages:
         language_percent = math.floor(language_occurrences[lang] / len(json) * 100)
         # more print formatting:
