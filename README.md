@@ -17,7 +17,7 @@ export ORGANIZATION=your-organization-name-here
 export REPO_LIMIT=100
 ```
 
-## Step 1
+## Step 2
 Pull the list of repositories (and their languages) that you would like to analyze, and save them to a file. Some example commands to do so are listed below.
 
 _List all repos in an organization:_
@@ -53,7 +53,7 @@ select(.languages | any(. == "JavaScript" or . == "TypeScript" or . == "Python" 
 > repos.json
 ```
 
-## Step 2
+## Step 3
 Analyze the languages in the targted list of repositories by running the `gh-parse-languages.py` python script.
 
 ```
@@ -73,7 +73,7 @@ python3 gh-parse-languages.py -f repos.json
 
 <img width="570" alt="Screenshot 2023-03-27 at 1 08 24 PM" src="https://user-images.githubusercontent.com/110078080/228015102-af19fa02-2139-41ab-8a07-bd6b47140bda.png">
 
-## (Optional) Step 3
+## (Optional) Step 4
 If you would like to convert the output from the previous `gh` commands into valid json format for your own further analysis, use the following command:
 ```shell
 sed '1s/^/[/;$!s/$/,/;$s/$/]/' repos.json > formatted_repos.json
