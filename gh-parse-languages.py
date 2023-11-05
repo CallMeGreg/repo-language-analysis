@@ -11,7 +11,7 @@ import argparse
 import math
 
 
-def calculateLanguageDistribution(json: list[dict], lang: str) -> None:
+def calculateLanguageDistribution(json: list[dict], lang: str, top_n: int) -> None:
     # count occurrences of each language for across each repo:
     language_occurrences = {}
     for pair in json:
@@ -29,15 +29,18 @@ def calculateLanguageDistribution(json: list[dict], lang: str) -> None:
 
     # more print formatting:
     repo_width = 0 if lang else len(str(max(language_occurrences.values())))
-    
+
     # print results:
-    for language in [lang] if lang else language_occurrences:
+    for idx, language in enumerate([lang] if lang else language_occurrences):
         # calculate language percentages:
         language_percent = math.floor(language_occurrences[language] / len(json) * 100)
         # more print formatting:
         repo_text = "repo " if language_occurrences[language] == 1 else "repos"
         # print results:
         print(f"{language_occurrences[language]:{repo_width}} {repo_text} ({language_percent:{percentage_width}}%) that include the language: {language}")
+        # exit if top_n set and printed
+        if idx >= top_n - 1:
+            break
 
 
 def main():
@@ -45,7 +48,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-f', '--file', required=True, help='JSON file to read from')
     parser.add_argument('-l', '--language', required=False, help='language to search for')
-    # parser.add_argument('-t', '--top', required=False, help='top N languages to display')
+    parser.add_argument('-t', '--top', required=False, help='top N languages to display', type=int, default=100)
     args = parser.parse_args()
 
     # read in lines from `gh repo list` command:
@@ -55,8 +58,13 @@ def main():
             json_obj.append(json.loads(line))
 
     # call function to calculate language distribution:
-    print(f"--- Parsing {len(json_obj)} repositories ---")
-    calculateLanguageDistribution(json_obj, args.language)
+    header = f"top {args.top}" if args.top else len(json_obj)
+    print(f"--- Parsing {header} repositories ---")
+    calculateLanguageDistribution(
+        json=json_obj,
+        lang=args.language,
+        top_n=args.top,
+    )
 
 
 main()
