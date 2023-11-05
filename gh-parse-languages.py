@@ -11,7 +11,7 @@ import argparse
 import math
 
 
-def calculateLanguageDistribution(json, lang):
+def calculateLanguageDistribution(json: list[dict], lang: str) -> None:
     # count occurrences of each language for across each repo:
     language_occurrences = {}
     for pair in json:
