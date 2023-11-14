@@ -1,3 +1,6 @@
+# Archived
+This repository has been archived and replaced by an easier to use `gh` extension that can be found here: https://github.com/CallMeGreg/gh-language
+
 # Overview
 This repo helps analyze the prgogramming languages used across a GitHub Organization. One use case for doing so is to identify the distribution of repositories that contain a language supported by [CodeQL](https://codeql.github.com/docs/).
 
